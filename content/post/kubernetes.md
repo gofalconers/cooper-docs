@@ -603,6 +603,7 @@ iptables -tnat --flush
 systemctl restart docker.service
 ```
 ### TODOS
+- kubernetes的操作面板dashboard
 - kubernetes的存储系统openebs
 - kubernetes的包管理软件helm
 - kubernetes的负载均衡器ingress
