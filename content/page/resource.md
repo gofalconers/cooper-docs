@@ -28,6 +28,30 @@ tags: ["website", "book"]
 - [树莓派实验室](http://shumeipai.nxez.com/)
 - [酷壳](https://coolshell.cn/)
 
+### DevOps
+
+- [lastbackend](http://docs.lastbackend.com/#_getting_started)
+- [gitkube](https://github.com/hasura/gitkube)
+- [drone-kubernetes](https://github.com/banzaicloud/drone-plugin-k8s-proxy)
+- [kiali 服务拓扑图](https://github.com/kiali/kiali)
+- [kubed k8s集群管理](https://appscode.com/products/kubed/)
+- [guard k8s集群监控](https://appscode.com/products/guard)
+- [fission serverless](https://github.com/fission/fission)
+- [prometheus-operator k8s集群监控](https://github.com/coreos/prometheus-operator)
+- [operator-sdk](https://github.com/operator-framework/operator-sdk)
+
+### PI
+
+- [eliot 部署工具](https://github.com/ernoaapa/eliot)
+
+### UI
+
+- [vault-ui](https://vault-ui.io/#/login)
+
+### charts
+
+- [drone chart](https://github.com/banzaicloud/banzai-charts/tree/master/stable/drone)
+
 ### 图片资源
 
 - [高清图片](http://www.jj20.com/)
