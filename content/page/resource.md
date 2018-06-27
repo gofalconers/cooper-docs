@@ -39,6 +39,8 @@ tags: ["website", "book"]
 - [fission serverless](https://github.com/fission/fission)
 - [prometheus-operator k8s集群监控](https://github.com/coreos/prometheus-operator)
 - [operator-sdk](https://github.com/operator-framework/operator-sdk)
+- [telepresence](https://github.com/telepresenceio/telepresence)
+
 
 ### PI
 
