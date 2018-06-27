@@ -93,7 +93,8 @@ tags: ["website", "book"]
 - [kops k8s集群管理工具](https://github.com/kubernetes/kops)
 - [astilectron golang的GUI工具](github.com/asticode/go-astilectron)
 - [lvs 高可用集群搭建](http://www.linuxvirtualserver.org/zh/lvs1.html)
-
+- [Material Dashboard 后台管理模块](https://www.creative-tim.com/product/vue-material-dashboard?tracking=first-time#)
+- [icons 常用图标](https://fontawesome.com/icons?d=gallery)
 
 ### 书籍列表
 
