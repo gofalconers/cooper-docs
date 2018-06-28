@@ -40,7 +40,8 @@ tags: ["website", "book"]
 - [prometheus-operator k8s集群监控](https://github.com/coreos/prometheus-operator)
 - [operator-sdk](https://github.com/operator-framework/operator-sdk)
 - [telepresence](https://github.com/telepresenceio/telepresence)
-
+- [Cobra](https://github.com/spf13/cobra)
+- [gosu](https://github.com/tianon/gosu)
 
 ### PI
 
@@ -53,6 +54,10 @@ tags: ["website", "book"]
 ### charts
 
 - [drone chart](https://github.com/banzaicloud/banzai-charts/tree/master/stable/drone)
+
+### Load Test
+
+- [iperf3](https://github.com/esnet/iperf)
 
 ### 图片资源
 
@@ -136,7 +141,8 @@ tags: ["website", "book"]
 - [git pro 中文版](https://gitee.com/progit/)
 - [prometheus实战](https://songjiayang.gitbooks.io/prometheus/)
 - [Don't.Make.Me.Think(中文,第二版)](http://vdisk.weibo.com/s/sYrR9gEu_Mfqo)
-- [布道之道—引领团队拥抱技术创新](http://vdisk.weibo.com/s/zmzzSciGaVmNj    )
+- [布道之道—引领团队拥抱技术创新](http://vdisk.weibo.com/s/zmzzSciGaVmNj)
+- [微服务设计](http://www.downcc.com/soft/301326.html)
 
 ### 专业文章
 - [微服务最佳实践](https://www.oschina.net/translate/cracking-microservices-practices?cmp)
@@ -175,3 +181,11 @@ tags: ["website", "book"]
 - [Docker切换OverLay(2)](http://www.senra.me/docker-switch-storage-driver-to-overlay2-to-optimize-performance/#more-1136)
 - [前端性能专栏](https://github.com/barretlee/performance-column)
 - [harbor 高可用搭建](https://blog.csdn.net/u012473280/article/details/73302741)
+- [kubeadm安装集群详解](https://tonybai.com/2017/01/24/explore-kubernetes-cluster-installed-by-kubeadm/)
+- [Kubernetes Resource QoS机制解读](http://www.osbaike.net/article-show-id-229028.html)
+- [tensorflow学习](https://jimmysong.io/posts/tensorflow-and-deep-learning-without-a-phd/)
+- [configmap使用](https://jimmysong.io/posts/kubernetes-configmap-introduction/)
+- [DaemonSet](http://www.dockerinfo.net/1139.html)
+- [ingress](https://jimmysong.io/posts/traefik-ingress-installation/)
+- [kubernetes分布式测试](https://jimmysong.io/posts/distributed-load-testing-using-kubernetes/)
+- [kubernetes服务滚动升级](https://jimmysong.io/posts/kubernetes-service-rolling-update/)
