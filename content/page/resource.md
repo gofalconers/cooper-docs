@@ -189,3 +189,4 @@ tags: ["website", "book"]
 - [ingress](https://jimmysong.io/posts/traefik-ingress-installation/)
 - [kubernetes分布式测试](https://jimmysong.io/posts/distributed-load-testing-using-kubernetes/)
 - [kubernetes服务滚动升级](https://jimmysong.io/posts/kubernetes-service-rolling-update/)
+- [应用日志收集](https://jimmysong.io/posts/kubernetes-filebeat/)
