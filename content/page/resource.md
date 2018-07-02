@@ -190,3 +190,4 @@ tags: ["website", "book"]
 - [kubernetes分布式测试](https://jimmysong.io/posts/distributed-load-testing-using-kubernetes/)
 - [kubernetes服务滚动升级](https://jimmysong.io/posts/kubernetes-service-rolling-update/)
 - [应用日志收集](https://jimmysong.io/posts/kubernetes-filebeat/)
+- [iSCSI 网络磁盘共享](https://blog.csdn.net/qq_33932782/article/details/77187868)

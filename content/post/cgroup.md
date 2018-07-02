@@ -8,3 +8,9 @@ tags: ["linux", "docker"]
 ---
 
 <!--more-->
+
+https://www.ibm.com/developerworks/cn/linux/1506_cgroup/index.html
+
+https://www.ibm.com/developerworks/cn/linux/l-lo-efficient-cluster-manage-system-LSF/index.html
+
+https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/6/html/resource_management_guide/ch01
