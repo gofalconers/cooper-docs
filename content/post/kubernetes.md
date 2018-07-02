@@ -518,6 +518,8 @@ node3     NotReady   <none>    44s       v1.9.6
 [root@master1 add-on]# kubectl -n kube-system delete ds kube-proxy
 [root@master1 add-on]# docker run --privileged --net=host example.com/google_containers/kube-proxy-amd64:v1.9.6 kube-proxy --cleanup
 ```
+> 对于 `kube-router`网络，内核需要支持 `ipvs`，执行 `lsmod|grep ip_vs`来查看当前机器是否支持，有输出则表示支持
+
 最后的最后，我们通过`kubectl`来查看集群状态，集群节点已经全部`Ready`，如下
 ```shell
 [root@master1 add-on]# kubectl get node
