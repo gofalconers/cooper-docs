@@ -372,4 +372,5 @@ tags: ["cicd", "interface", "docker", "golang"]
 
 # 书籍推荐
 
+- [持续交付-发布可靠软件的系统方法](http://vdisk.weibo.com/s/uwMdY7-7n-mkh)
 - [微服务设计](http://www.downcc.com/soft/301326.html)
