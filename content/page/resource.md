@@ -42,6 +42,7 @@ tags: ["website", "book"]
 - [telepresence](https://github.com/telepresenceio/telepresence)
 - [Cobra](https://github.com/spf13/cobra)
 - [gosu](https://github.com/tianon/gosu)
+- [minio对象存储](https://minio.io/kubernetes.html)
 
 ### PI
 

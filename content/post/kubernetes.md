@@ -207,8 +207,8 @@ gpgcheck=0
 从[etcd Release](https://github.com/coreos/etcd/releases/)中选择`v3.3.2`版本，下载到本地后将二进制文件放到`/usr/bin`中。对于`etcd`集群有加密和不加密安装，本次是通过加密安装，对于加密工具，官方推荐采用`cfssl`来进行加密。下载工具到本地
 ```shell
 [root@master1 ssl]# mkdir /opt/ssl;cd /opt/ssl/
-[root@master1 ssl]# wget https://pkg.cfssl.org/R1.2/cfssl_linux-arm -O cfssl
-[root@master1 ssl]# wget https://pkg.cfssl.org/R1.2/cfssljson_linux-arm -O cfssljson
+[root@master1 ssl]# wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 -O cfssl
+[root@master1 ssl]# wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 -O cfssljson
 [root@master1 ssl]# wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64 -O cfssl-certinfo
 [root@master1 ssl]# chmod +x ./* # 赋权限
 [root@master1 ssl]# export PATH=.:$PATH # 将当前目录临时加到系统环境变量中
