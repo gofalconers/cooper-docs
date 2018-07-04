@@ -19,9 +19,9 @@ tags: ["linux", "centos", "docker", "network", "cicd", "kubernetes", "golang"]
 - **存储编排**：自动挂接存储系统，这些存储可以来自本地、公共云提供商、网络存储(如NFS、ISCSI、Gluster、Ceph、Openebs等)。
 
 ### kubernetes环境配置
-对于`kubernetes`的安装，官方提供了两种方式，二进制安装和容器(`kubeadm`)安装，对于二进制的安装难度较大，以下介绍通过`kubeadm`进行集群的安装。在使用`kubeadm`之前，我们需要修改一下系统配置，因为`kubernetes`是根据主机的`hostname`进行注册，所以我们将不同机器修改成不同的`hostname`；然后，由于`kubernetes`的`apiserver`通过机器的`10255`端口通信，为了防止端口被禁止，我们关闭防火墙以及加固；最后`kubernetes`的集群网络是通过主机的网卡进行设置，我们要开启内核网卡转包的模式。
+对于`kubernetes`的安装，官方提供了两种方式，二进制安装和容器(`kubeadm`)安装，对于二进制的安装难度较大，以下介绍通过`kubeadm`进行集群的安装。在使用`kubeadm`之前，我们需要修改一下系统配置，因为`kubernetes`是根据主机的`hostname`进行注册，所以我们将不同机器修改成不同的`hostname`；然后，由于`kubernetes`的`apiserver`通过机器的`10255`端口通信，为了防止端口被禁止，我们关闭防火墙以及加固；最后`kubernetes`的集群网络是通过配置主机的网卡，我们要开启内核网卡转包的模式。
 
-> 以下操作是在 `centos`系统上操作，对于其他系统需要安装不同命令修改
+> 以下操作是在 `centos`系统上操作，对于其他系统需要使用对应的命令
 
 ##### 修改hostname
 ```shell
@@ -34,7 +34,12 @@ tags: ["linux", "centos", "docker", "network", "cicd", "kubernetes", "golang"]
 ```shell
 [root@master1 ~]# systemctl disable firewalld
 [root@master1 ~]# systemctl stop firewalld
-[root@master1 ~]# setenforce 0 # 临时关闭selinux，永久关闭是修改/etc/selinux/config配置
+[root@master1 ~]# setenforce 0 # 临时关闭selinux，下面是永久关闭selinux
+[root@master1 ~]# sed -i "s/^SELINUX=enforcing/SELINUX=disabled/g" /etc/sysconfig/selinux
+[root@master1 ~]# sed -i "s/^SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+[root@master1 ~]# sed -i "s/^SELINUX=permissive/SELINUX=disabled/g" /etc/sysconfig/selinux
+[root@master1 ~]# sed -i "s/^SELINUX=permissive/SELINUX=disabled/g" /etc/selinux/config  
+[root@master1 ~]# reboot -n 修改后需要重启机器
 [root@master1 ~]# /usr/sbin/sestatus # 查看加固是否关闭，出现下面结果表示已经关闭
 SELinux status:                 disabled
 ```
@@ -142,7 +147,7 @@ vrrp_instance VI_1 {
 
 }
 ```
-然后，在两台机器启动输入`systemctl enable keepalived;systemctl start keepalived`来启动`keepalived`。在这个过程中，我们可以查看日志来确认启动过程，日志内容如下
+然后，在两台机器上分别执行`systemctl enable keepalived;systemctl start keepalived`来启动`keepalived`。在这个过程中，我们可以查看日志来确认启动过程，日志内容如下
 ```shell
 [root@master1 ~]# systemctl status keepalived -l
 ● keepalived.service - LVS and VRRP High Availability Monitor
@@ -187,10 +192,10 @@ Jun 27 16:45:02 master2 Keepalived_vrrp[16991]: VRRP_Instance(VI_1) Received adv
 Jun 27 16:45:02 master2 Keepalived_vrrp[16991]: VRRP_Instance(VI_1) Entering BACKUP STATE
 Jun 27 16:45:02 master2 Keepalived_vrrp[16991]: VRRP_Instance(VI_1) removing protocol VIPs.
 ```
-在上面日志中，我们可以看到在`master1`上新增了一个虚`IP`，`master2`进入备节点中。在`master1`机器上输入`ip a`会看到一个新的网卡。最后，我们关闭`master1`机器上的`keepalived`，来确认虚`IP`正确漂移到`master2`机器上，再次不做详细记录。
+在上面日志中，我们可以看到在`master1`上新增了一个虚`IP`，`master2`进入备节点中。在`master1`机器上输入`ip a`会看到一个新的网卡。最后，我们关闭`master1`机器上的`keepalived`，来确认虚`IP`正确漂移到`master2`机器上，在此不做详细记录。
 
 ### kubernetes集群安装
-在上面的操作中，我们完成了`kubernetes`集群安装必要的环境配置。我们现在可以通过`kubeadm`来安装集群，主要需要三个工具`kubeadm`、`kubelet`、`kubectl`，对于这三者区别，`kubeadm`和`kubelet`是安装集群工具，`kubectl`是集群命令行工具，可以操作集群资源。接下来，我们通过`yum`来进行安装，需要配置一个[阿里云k8s源](https://mirrors.aliyun.com/kubernetes/yum/)，在`/etc/yum.repos.d`新增一个`k8s.repo`，内容如下
+在上面的操作中，我们完成了`kubernetes`集群安装必要的环境配置。我们现在可以通过`kubeadm`来安装集群，主要需要三个工具`kubeadm`、`kubelet`、`kubectl`，对于这三者区别，`kubeadm`和`kubelet`是安装集群工具，`kubectl`是集群命令行工具，可以操作集群资源。接下来，我们通过`yum`来进行安装，需要配置一个[阿里云k8s源](https://mirrors.aliyun.com/kubernetes/yum/)，只需在`/etc/yum.repos.d`新增一个`k8s.repo`，内容如下
 ```shell
 [root@master1 yum.repos.d]# cat k8s.repo
 [kubernetes]
@@ -202,7 +207,7 @@ gpgcheck=0
 ```shell
 [root@master1 yum.repos.d]# yum install kubeadm-1.9.6 kubelet-1.9.6 kubectl-1.9.6
 ```
-等待安装结束，上面三个工具就安装到本地上了。在其他机器上都执行一样操作，这样我们就差最后一步就可以了。由于`kubernetes`采用`etcd`作为数据库存储，所以我们还需要安装`etcd`。对于`etcd`的安装有单机和集群，本次由于资源有限，通过两台机器组成集群，分别安装在`master1`和`master2`上面。
+等待安装结束，上面三个工具就安装到本地上了。在其他机器上都执行一样操作，这样我们就差最后一步就可以安装集群了。由于`kubernetes`采用`etcd`作为数据库存储，所以我们还需要安装`etcd`。对于`etcd`的安装有单机和集群，本次由于资源有限，通过两台机器组成集群，分别安装在`master1`和`master2`上面。
 ##### etcd安装
 从[etcd Release](https://github.com/coreos/etcd/releases/)中选择`v3.3.2`版本，下载到本地后将二进制文件放到`/usr/bin`中。对于`etcd`集群有加密和不加密安装，本次是通过加密安装，对于加密工具，官方推荐采用`cfssl`来进行加密。下载工具到本地
 ```shell
@@ -292,12 +297,12 @@ ca-config.json  ca.csr  ca-csr.json  ca-key.pem  ca.pem
 [root@master1 ssl]# ls etcd*
 etcd  etcd.csr  etcd-csr.json  etcdctl  etcd-key.pem  etcd.pem
 [root@master1 ssl]# mkdir -p /etc/etcd/ssl /var/lib/etcd
-[root@master1 ssl]# cp etcd.pem etcd-key.pem  ca.pem /etc/etcd/ssl/ # 将生产的证书拷贝到/etc/etcd/ssl
-[root@master2 ssl]# scp -r root@192.168.200.22:/etc/etcd/ssl /etc/etcd # 在master2机器上拷贝master1制作的证书到本地
+[root@master1 ssl]# cp etcd.pem etcd-key.pem  ca.pem /etc/etcd/ssl/ # 将制作的证书拷贝到/etc/etcd/ssl
+[root@master2 ssl]# scp -r root@192.168.200.22:/etc/etcd/ssl /etc/etcd # 在master2机器上拷贝master1制作的证书到本地目录
 ```
 当`etcd`集群证书创建成功后，我们配置`etcd.service`服务文件，如下所示
 ```shell
-[root@master1 ssl]# cat /etc/systemd/system/etcd.service # 新建`etcd.service`文件，然后安装下面格式修改
+[root@master1 ssl]# cat /etc/systemd/system/etcd.service # 新建etcd.service文件，然后按照下面格式修改内容
 [Unit]
 Description=Etcd Server
 After=network.target
@@ -373,7 +378,8 @@ WantedBy=multi-user.target
 
 > 对于`etcd.service`说明，参考 [centos服务创建](https://blog.csdn.net/zhangxtn/article/details/50462008)
 
-最后，我们启动在`master1`和`master2`机器上输入`system enable etcd;system start etcd`来启动`etcd`集群，通过`systemctl status etcd -l`查看日志，如下表示正常
+最后，我们在`master1`和`master2`机器分别输入`systemctl daemon-reload
+;system enable etcd;system start etcd`来启动`etcd`集群，在命令执行完毕后，通过`systemctl status etcd -l`查看`etcd`服务状态日志，如下表示正常
 ```shell
 [root@master1 etcd]# systemctl status etcd -l
 ● etcd.service - Etcd Server
@@ -417,13 +423,13 @@ Jun 27 17:32:38 master2 systemd[1]: Started Etcd Server.
 Jun 27 17:32:38 master2 etcd[24108]: set the initial cluster version to 3.3
 Jun 27 17:32:38 master2 etcd[24108]: enabled capabilities for version 3.3
 ```
-当`etcd`集群启动正常后，我们还不能直接来安装集群，由于`kubeadm`启动的镜像默认是在`google`镜像中心中，我们需要参考[kubeadm 镜像列表](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/)下载对应镜像本地。当我们将所有镜像都下载到本地后，修改`kubelet`启动时指定从本地镜像仓库下载，如下
+当`etcd`集群启动正常后，我们还不能直接来安装`k8s`集群，由于`kubeadm`启动的镜像默认是从`google`镜像中心下载，国内是无法直接下载的，我们需要根据[kubeadm 镜像列表](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/)下载对应镜像到本地的镜像仓库。当我们将所有镜像都下载到本地后，只需要修改`kubelet`配置文件，设置启动时从本地镜像仓库下载所需的镜像，如下
 ```shell
 [root@master2 kubelet.service.d]# cat /etc/systemd/system/kubelet.service.d/20-pod-infra-image.conf # 在该目录新建20-pod-infra-image.conf文件
 [Service]
-Environment="KUBELET_EXTRA_ARGS=--pod-infra-container-image=example.com/google_containers/pause-amd64:3.0" # 修改成本地镜像仓库地址
+Environment="KUBELET_EXTRA_ARGS=--pod-infra-container-image=example.com/google_containers/pause-amd64:3.0" # 将example.com修改成本地镜像仓库地址，格式对应
 
-[root@master2 kubelet.service.d]# cat /etc/systemd/system/kubelet.service.d/20-pod-infra-image.conf
+[root@master2 kubelet.service.d]# cat /etc/systemd/system/kubelet.service.d/20-pod-infra-image.conf # 修改kubelet的cgroup类型与docker的一致
 [Service]
 Environment="KUBELET_EXTRA_ARGS=--pod-infra-container-image=dhub.juxinli.com/google_containers/pause-amd64:3.0"
 [root@master2 kubelet.service.d]# cat /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
@@ -439,9 +445,9 @@ Environment="KUBELET_CERTIFICATE_ARGS=--rotate-certificates=true --cert-dir=/var
 ExecStart=
 ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_SYSTEM_PODS_ARGS $KUBELET_NETWORK_ARGS $KUBELET_DNS_ARGS $KUBELET_AUTHZ_ARGS $KUBELET_CADVISOR_ARGS $KUBELET_CGROUP_ARGS $KUBELET_CERTIFICATE_ARGS $KUBELET_EXTRA_ARGS
 ```
-> 集群所有主机都需要安装上面设置镜像仓库地址
+> 集群所有主机都需要安装上面设置镜像仓库地址，对于镜像仓库的安装，参考 [vmare harbor企业镜像仓库](https://github.com/vmware/harbor)
 
-当完成上面的操作后，我们还是不可以来进行安装，需要编写`kubeadm`启动配置文件`config.yml`，如下所示
+当完成上面的操作后，我们还是不可以马上安装`k8s`集群，还需要编写`kubeadm`启动配置项文件`config.yml`，如下所示
 ```shell
 [root@master1 kubernetes]# touch config.yml
 [root@master1 kubernetes]# cat config.yml
@@ -491,7 +497,10 @@ as root:
 
   kubeadm join --token b99a00.a144ef80536d4344 192.168.200.240:6443 --discovery-token-ca-cert-hash sha256:e740d9bae6699ee24516eaeea582abb3e01b0621bf36818def3774c0447e1bf3
 ```
-接下来，在`master2`机器上将`master1`的`config.yml`文件和`/etc/kubernetes/pki`目录下面文件拷贝到本地的`/etc/kubernetes/pki`中，然后运行`kubeadm init --config /path/to/config.yml`(替换成对应的目录)，等待一段时间同样可以看到上面的日志信息，在`node3`节点机器上运行`kubeadm join --token b99a00.a144ef80536d4344 192.168.200.240:6443 --discovery-token-ca-cert-hash sha256:e740d9bae6699ee24516eaeea582abb3e01b0621bf36818def3774c0447e1bf3`来加入到集群中。在`master1`机器上通过`kubectl`来查看集群状态，如下所示
+
+> 当忘记保存上面的 `kubeadm join`信息，当想要新加一个节点，可以通过在 `master`机器上输入 `kubeadm token generate;kubeadm token create <generated-token> --print-join-command --ttl=0`来查看
+
+接下来，在`master2`机器上将`master1`的`config.yml`文件和`/etc/kubernetes/pki`目录下面文件拷贝到本地的`/etc/kubernetes/pki`中，然后同样运行之前的命令`kubeadm init --config /path/to/config.yml`(替换成对应的目录)，命令执行结束后同样会看到上面的日志信息，在`node3`节点机器上运行来加入显示的`kubeadm join`一行命令，这会将`node3`机器加入到集群中。在`master1`机器上通过`kubectl`来查看集群状态，如下所示
 ```shell
 [root@master1 kubernetes]# kubectl get node
 NAME      STATUS     ROLES     AGE       VERSION
@@ -499,28 +508,35 @@ master1   NotReady   master    7m        v1.9.6
 master2   NotReady   master    2m        v1.9.6
 node3     NotReady   <none>    44s       v1.9.6
 ```
-出现`NotReady`是因为我们还需要安装一下`kubernetes`网络模型，有`fanner`、`casio`、`kube-router`等，本次选择`kube-router`类型，参考[kube-router安装说明](https://github.com/cloudnativelabs/kube-router/blob/master/docs/kubeadm.md)，安装说明，准备好安装`yml`文件，如下
+
+> 根据 `kubeadm init`命令显示的提示，正确配置 `kubelet`
+
+出现`NotReady`表示集群还没安装网络模型，现在还无法使用，对于`kubernetes`网络模型，有`fannel`、`casio`、`kube-router`等，本次选择`kube-router`类型，参考[kube-router安装说明](https://github.com/cloudnativelabs/kube-router/blob/master/docs/kubeadm.md)，下载对应的安装文件后，执行以下命令
 ```shell
-[root@master1 add-on]# l
-总用量 8
--rw-r--r-- 1 root root 3812 5月  31 10:35 kubeadm-kuberouter-all-features.yaml
--rw-r--r-- 1 root root 3710 5月  31 10:29 kubeadm-kuberouter.yaml
 [root@master1 add-on]# kubectl apply -f kubeadm-kuberouter.yaml
 [root@master1 add-on]# kubectl apply -f kubeadm-kuberouter-all-features.yaml
 [root@master1 add-on]# kubectl -n kube-system delete ds kube-proxy
 [root@master1 add-on]# docker run --privileged --net=host example.com/google_containers/kube-proxy-amd64:v1.9.6 kube-proxy --cleanup
 ```
-最后的最后，我们通过`kubectl`来查看集群状态，应该已经全部`Ready`，如下
+> 对于 `kube-router`网络，内核需要支持 `ipvs`，执行 `lsmod|grep ip_vs`来查看当前机器是否支持，有输出则表示支持
+
+最后的最后，我们通过`kubectl`来查看集群状态，集群节点已经全部`Ready`，如下
 ```shell
 [root@master1 add-on]# kubectl get node
 NAME      STATUS    ROLES     AGE       VERSION
 master1   Ready     master    17m       v1.9.6
 master2   Ready     master    13m       v1.9.6
 node3     Ready     <none>    11m       v1.9.6
+[root@master2 helm]# kubectl get cs # 查看集群状态
+NAME                 STATUS    MESSAGE             ERROR
+scheduler            Healthy   ok
+controller-manager   Healthy   ok
+etcd-0               Healthy   {"health":"true"}
+etcd-1               Healthy   {"health":"true"}
 ```
-我们来创建一个应用来感受`kubernetes`的使用，首先，准备一个`nginx.yml`文件，如下
+接下来，我们来创建一个应用来感受`kubernetes`的使用，首先，准备一个`nginx.yml`文件，如下
 ```shell
-[root@master2 deployment]# cat nginx.yml
+[root@master2 deployment]# cat nginx.yml # 创建一个deployment类型的ngixn服务
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -539,7 +555,7 @@ spec:
         - containerPort: 80
 [root@master2 deployment]# kubectl create -f nginx.yml
 deployment "nginx-deployment" created
-[root@master2 deployment]# kubectl get pods  -o wide # 等待一段时间，出现配置里面设定的10个pod
+[root@master2 deployment]# kubectl get pods  -o wide # 查看刚才命令的结果，会看到有10pods创建
 NAME                               READY     STATUS    RESTARTS   AGE       IP             NODE
 nginx-deployment-9985f488c-7g44s   1/1       Running   0          30s       10.244.2.139   node3
 nginx-deployment-9985f488c-8vrfj   1/1       Running   0          30s       10.244.2.142   node3
@@ -551,7 +567,7 @@ nginx-deployment-9985f488c-md2cr   1/1       Running   0          30s       10.2
 nginx-deployment-9985f488c-tnq4m   1/1       Running   0          30s       10.244.2.140   node3
 nginx-deployment-9985f488c-twrg5   1/1       Running   0          30s       10.244.2.138   node3
 nginx-deployment-9985f488c-wnzn7   1/1       Running   0          30s       10.244.2.137   node3
-[root@master2 deployment]# curl  10.244.2.145 
+[root@master2 deployment]# curl  10.244.2.145  # 访问一个pod的ip来确定功能正常
 <!DOCTYPE html>
 <html>
 <head>
@@ -578,29 +594,86 @@ Commercial support is available at
 </body>
 </html>
 ```
-在安装过程中，对于长时间的没有反应，可以在对应机器上查看系统日志`tailf -f /var/log/messages`来确定报错原因，我单独安装了几天，反复查看文档和日志才最终安装成功。
+在安装过程中，对于长时间的没有反应，可以在对应机器上查看系统日志`tailf -f /var/log/messages`来确定报错原因，同时需要查阅官方文档。
 
-> 本次安装参考了 [kubernetes1.9安装](https://www.kubernetes.org.cn/3536.html)一文
+> 本次安装参考了 [kubernetes1.9快速安装](https://www.kubernetes.org.cn/3536.html)一文
 
 ### kubernetes环境清理
-在我们安装失败后，当我们再次在机器上安装时，需要对于环境做一些清理操作防止配置有影响。主要有两步，一是清理`etcd`数据，二是清理`kubeadm`启动项
+当我们安装失败后，需要再次在机器上安装时，需要对于环境做一些清理操作，清理一些配置项来避免再次安装失败。主要有两步，一是清理`etcd`数据，二是清理`kubeadm`启动项
 ##### etcd清理
 ```shell
-[root@master2 etcd]# systemctl stop etcd
-[root@master2 etcd]# rm -rf /var/lib/etcd/member
+[root@master1 etcd]# systemctl stop etcd # 在etcd安装机器上都需要操作
+[root@master1 etcd]# rm -rf /var/lib/etcd/member # 在etcd安装机器上都需要操作，之后重新启动etcd
 ```
 ##### kubeadm清理
 ```shell
 kubeadm reset
+rm -rf /root/.kube
 ip link delete dummy0
 ip link delete kube-dummy-if
 ip link delete kube-bridge
 ip link delete tunl0
-iptables -F &&  iptables -X &&  iptables -F -t nat &&  iptables -X -t nat
+iptables -F &&  iptables -X &&  iptables -F -t nat &&  iptables -X -t nat #清理路由
 iptables -L -n
 iptables --flush  
 iptables -tnat --flush
-systemctl restart docker.service
+systemctl restart docker.service # 重启docker
+```
+
+### 查看集群网络情况
+安装`ipvsadm`来查看`kube-router`建立的网络连接情况
+```shell
+[root@node3 opt]# ipvsadm
+IP Virtual Server version 1.2.1 (size=4096)
+Prot LocalAddress:Port Scheduler Flags
+  -> RemoteAddress:Port           Forward Weight ActiveConn InActConn
+TCP  node3:31109 rr
+  -> 10.244.3.12:pcsync-https     Masq    1      0          0
+TCP  node3:https rr persistent 10800
+  -> 192.168.200.240:sun-sr-https Masq    1      0          0
+TCP  node3:domain rr
+  -> 10.244.0.21:domain           Masq    1      0          0
+TCP  node3:http rr
+  -> 10.244.3.10:us-cli           Masq    1      0          0
+TCP  node3:http rr
+  -> 10.244.3.11:hbci             Masq    1      0          0
+TCP  node3:d-s-n rr
+  -> 10.244.4.2:d-s-n             Masq    1      0          0
+TCP  node3:https rr
+  -> 10.244.3.12:pcsync-https     Masq    1      0          0
+UDP  node3:domain rr
+  -> 10.244.0.21:domain           Masq    1      0          0
+```
+安装`ipset`来查看请求相应情况
+```shell
+[root@node2 docker]# ipset --list
+Name: kube-router-pod-subnets
+Type: hash:net
+Revision: 3
+Header: family inet hashsize 1024 maxelem 65536 timeout 0
+Size in memory: 17168
+References: 2
+Members:
+10.244.0.0/24 timeout 0
+10.244.2.0/24 timeout 0
+10.244.1.0/24 timeout 0
+10.244.3.0/24 timeout 0
+10.244.4.0/24 timeout 0
+10.244.5.0/24 timeout 0
+
+Name: kube-router-node-ips
+Type: hash:ip
+Revision: 1
+Header: family inet hashsize 1024 maxelem 65536 timeout 0
+Size in memory: 16912
+References: 1
+Members:
+192.168.201.2 timeout 0
+192.168.100.150 timeout 0
+192.168.200.22 timeout 0
+192.168.200.142 timeout 0
+192.168.100.111 timeout 0
+192.168.200.21 timeout 0
 ```
 ### TODOS
 - kubernetes的操作面板dashboard
