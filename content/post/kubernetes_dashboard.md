@@ -261,7 +261,7 @@ monitoring-influxdb-854d649fd4-xk9cq    1/1       Running   0          1h       
 # 登陆dashboard ui
 在上面的步骤中我们已经成功安装好`dashboard`所有组件，对于`web`界面的访问地址我们可以通过两种方式访问，代理访问和`NodePort`访问。
 ### 代理访问
-在maser机器上输入kubelet proxy，设置本地代理与apiserver通信，然后我们就可以访问地址`http://localhost:8001/ui`，这只能访问本地地址，我们需要修改代理的`IP`地址为`master`的外网网卡地址，如下
+在`maser`机器上输入`kubelet proxy`，设置本地代理与`apiserver`通信，然后我们就可以访问地址`http://localhost:8001/ui`，需要注意的是这只能访问本地地址，我们需要修改代理的`IP`地址为`master`的外网网卡地址，如下
 ```shell
 kubectl proxy --address='192.168.137.100' --port=8086 --accept-hosts='^*$'
 ```
