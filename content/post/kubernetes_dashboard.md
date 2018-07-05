@@ -265,7 +265,7 @@ monitoring-influxdb-854d649fd4-xk9cq    1/1       Running   0          1h       
 ```shell
 kubectl proxy --address='192.168.137.100' --port=8086 --accept-hosts='^*$'
 ```
-在浏览器中输入`https://192.168.137.100`就会看到登陆界面，这种方式比较繁琐。
+在浏览器中输入`https://192.168.137.100`就会看到登陆界面，但我们发现这种方式比较繁琐，下面介绍通过`NodePort`方式访问。
 ### NodePort访问
 在`master`机器上通过`kubelet get svc -n kube-system`来查看集群的`services`，找到`kubernetes-dashboard`，输入`kubectl edit svc kubernetes-dashboard -n kube-system`将`ClusterIP`修改成`NodePort`，最终结果如下
 ```shell
