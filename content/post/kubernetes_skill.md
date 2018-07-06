@@ -25,3 +25,4 @@ Jul 06 18:26:06 node3 dockerd[10669]: time="2018-07-06T18:26:06+08:00" level=war
 Jul 06 18:26:06 node3 dockerd[10669]: time="2018-07-06T18:26:06+08:00" level=info msg="loading plugin "io.containerd.differ.v1.walking"..." module=containerd type=io.containerd.differ.v1
 ```
 4、节点主机自动关机，在master机器上发现没有几秒内进行转移服务容器，待确定是在哪配置的时间项
+5、在pv的服务存储卷节点机器上停止docker，待确认存储卷内容是否会进行转移，实现分布式存储；确定调度时间以及etcd性能是否有影响调度
