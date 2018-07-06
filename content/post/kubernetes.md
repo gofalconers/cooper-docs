@@ -51,6 +51,7 @@ net.bridge.bridge-nf-call-iptables = 1 # 将这行添加到/etc/sysctl.conf
 [root@master1 ~]# sysctl -p /etc/sysctl.conf # 执行该命令后，出现有刚才添加的配置项表示成功
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
+[root@master1 ~]# modprobe br_netfilter # 如果出现No such file or directory，执行该命令后重新执行上面命令
 ```
 这样，我们就处理一台机器环境，对于集群的其他机器都是同样处理。本次安装的机器列表如下
 
@@ -518,7 +519,7 @@ node3     NotReady   <none>    44s       v1.9.6
 [root@master1 add-on]# kubectl -n kube-system delete ds kube-proxy
 [root@master1 add-on]# docker run --privileged --net=host example.com/google_containers/kube-proxy-amd64:v1.9.6 kube-proxy --cleanup
 ```
-> 对于 `kube-router`网络，内核需要支持 `ipvs`，执行 `lsmod|grep ip_vs`来查看当前机器是否支持，有输出则表示支持
+> 对于 `kube-router`网络，内核需要支持 `ipvs`，执行 `lsmod|grep ip_vs`来查看当前机器是否支持，有输出则表示支持，没有的话执行 `modprobe  ip_vs`来手动加载
 
 最后的最后，我们通过`kubectl`来查看集群状态，集群节点已经全部`Ready`，如下
 ```shell
@@ -674,6 +675,18 @@ Members:
 192.168.200.142 timeout 0
 192.168.100.111 timeout 0
 192.168.200.21 timeout 0
+```
+### 移除集群节点
+当节点出现故障时，我们需要将该节点移除，执行下面命令
+```shell
+[root@master2 bin]# kubectl drain node4 --delete-local-data --force --ignore-daemonsets
+node "node4" cordoned
+WARNING: Deleting pods with local storage: kubernetes-dashboard-86dd476cc8-cfdx9, monitoring-grafana-79fd5987c8-wcrnr; Ignoring DaemonSet-managed                                                                                         pods: kube-router-hthj8
+pod "monitoring-grafana-79fd5987c8-wcrnr" evicted
+pod "kubernetes-dashboard-86dd476cc8-cfdx9" evicted
+pod "pvc-26038a45-7f5d-11e8-a4f7-525400bcf250-ctrl-545546857f-lxh8p" evicted
+pod "heapster-5cd864cd6-zxvqb" evicted
+node "node4" drained
 ```
 ### TODOS
 - kubernetes的操作面板dashboard

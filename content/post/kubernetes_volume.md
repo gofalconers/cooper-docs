@@ -34,3 +34,6 @@ Jul  4 15:55:04 node3 kubelet: E0704 15:55:04.791725    2884 summary.go:92] Fail
 Jul  4 15:55:13 node3 kubelet: E0704 15:55:13.840574    2884 file.go:76] Unable to read manifest path "/etc/kubernetes/manifests": path does not exist, ignoring
 Jul  4 15:55:14 node3 kubelet: E0704 15:55:14.804346    2884 summary.go:92] Failed to get system container stats for "/system.slice/docker.service": failed to get cgroup stats for "/system.slice/docker.service": failed to get container info for "/system.slice/docker.service": unknown container "/system.slice/docker.service"
 Jul  4 15:55:14 node3 kubelet: E0704 15:55:14.804397    2884 summary.go:92] Failed to get system container stats for "/system.slice/kubelet.service": failed to get cgroup stats for "/system.slice/kubelet.service": failed to get container info for "/system.slice/kubelet.service": unknown container "/system.slice/kubelet.service"
+
+
+在安装`openebs`后，在一个节点使用该节点下的磁盘，但我将该节点移除，发现文件内容没有进行转移。

@@ -279,7 +279,7 @@ monitoring-influxdb    ClusterIP   10.100.200.50    <none>        8086/TCP      
 ```
 打开浏览器输入`https://$NodeIP:30202`来登陆`UI`界面，在出现登陆方式中选择令牌登陆方式，然后在`master`机器上通过以下命令获取登陆的`token`
 ```shell
-[root@master2 monitor]# kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+[root@master2 monitor]#   
 Name:         admin-user-token-wrwx8
 Namespace:    kube-system
 Labels:       <none>
