@@ -54,6 +54,7 @@ tags: ["website", "book"]
 - [kubernetes的使用技巧](http://dockone.io/article/5997)
 - [Thanos 开源的大规模Prometheus集群解决方案](http://dockone.io/article/6019)
 - [mergify 自动PR软件](https://mergify.io/)
+- [argoproj](https://github.com/argoproj/argo/blob/master/demo.md)
 
 ### serverless
 - [高性能事件和数据处理nuclio](https://www.oschina.net/p/nuclio)
