@@ -24,3 +24,4 @@ Jul 06 18:26:06 node3 dockerd[10669]: time="2018-07-06T18:26:06+08:00" level=war
 Jul 06 18:26:06 node3 dockerd[10669]: time="2018-07-06T18:26:06+08:00" level=warning msg="could not use snapshotter overlayfs in metadata plugin" error="/var/lib/docker/containerd/daemon/io.containerd.snapshotter.v1.overlayfs does not
 Jul 06 18:26:06 node3 dockerd[10669]: time="2018-07-06T18:26:06+08:00" level=info msg="loading plugin "io.containerd.differ.v1.walking"..." module=containerd type=io.containerd.differ.v1
 ```
+4、节点主机自动关机，在master机器上发现没有几秒内进行转移服务容器，待确定是在哪配置的时间项
