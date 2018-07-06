@@ -45,6 +45,14 @@ tags: ["website", "book"]
 - [minio对象存储](https://minio.io/kubernetes.html)
 - [k8s灾难恢复管理系统 ark](https://gitee.com/mirrors/heptio-ark)
 - [gosu 容器最小权限](https://github.com/tianon/gosu)
+- [Airflow 流程编写软件](https://github.com/apache/incubator-airflow)
+- [kubeflow](https://github.com/kubeflow/kubeflow)
+- [kubeflow安装教程](http://dockone.io/article/3291)
+- [Gardener Dashboard](https://github.com/gardener/dashboard)
+- [Litmus 集群测试工具](http://dockone.io/article/6006)
+- [powerfulseal 集群测试工具](https://github.com/bloomberg/powerfulseal)
+- [kubernetes的使用技巧](http://dockone.io/article/5997)
+- [Thanos 开源的大规模Prometheus集群解决方案](http://dockone.io/article/6019)
 
 ### serverless
 - [高性能事件和数据处理nuclio](https://www.oschina.net/p/nuclio)
@@ -200,4 +208,9 @@ tags: ["website", "book"]
 - [reposync 自制yum源](http://blog.51cto.com/gdlwolf/1729020)
 - [基于LLDP和OpenFlow的网络拓扑检测](https://www.sdnlab.com/21008.html)
 - [性能测试工具Iperf 验证SDN网络](https://www.sdnlab.com/15088.html)
+<<<<<<< HEAD
 - [containerd介绍](https://www.sohu.com/a/233247128_198222)
+=======
+- [借助 CSI 扩展 Kubernetes 存储能力](https://www.sohu.com/a/235034892_198222)
+- [kubernetes资源调度](http://dockone.io/article/7693)
+>>>>>>> refs/remotes/origin/master
