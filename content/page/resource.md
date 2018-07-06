@@ -49,10 +49,11 @@ tags: ["website", "book"]
 - [kubeflow](https://github.com/kubeflow/kubeflow)
 - [kubeflow安装教程](http://dockone.io/article/3291)
 - [Gardener Dashboard](https://github.com/gardener/dashboard)
-- [Litmus 集群测试工具](http://dockone.io/article/6006)
-- [powerfulseal 集群测试工具](https://github.com/bloomberg/powerfulseal)
+- [Litmus 集群混沌测试工具](http://dockone.io/article/6006)
+- [powerfulseal 集群混沌测试工具](https://github.com/bloomberg/powerfulseal)
 - [kubernetes的使用技巧](http://dockone.io/article/5997)
 - [Thanos 开源的大规模Prometheus集群解决方案](http://dockone.io/article/6019)
+- [mergify 自动PR软件](https://mergify.io/)
 
 ### serverless
 - [高性能事件和数据处理nuclio](https://www.oschina.net/p/nuclio)
@@ -208,9 +209,10 @@ tags: ["website", "book"]
 - [reposync 自制yum源](http://blog.51cto.com/gdlwolf/1729020)
 - [基于LLDP和OpenFlow的网络拓扑检测](https://www.sdnlab.com/21008.html)
 - [性能测试工具Iperf 验证SDN网络](https://www.sdnlab.com/15088.html)
-<<<<<<< HEAD
 - [containerd介绍](https://www.sohu.com/a/233247128_198222)
-=======
-- [借助 CSI 扩展 Kubernetes 存储能力](https://www.sohu.com/a/235034892_198222)
-- [kubernetes资源调度](http://dockone.io/article/7693)
->>>>>>> refs/remotes/origin/master
+- [docker修改成cgroup类型](http://www.senra.me/docker-switch-storage-driver-to-overlay2-to-optimize-performance/)
+- [镜像存储，编写最少层的Dockefile](https://www.cnblogs.com/styshoo/p/6503953.html)
+- [ext4 linux文件系统](https://wiki.archlinux.org/index.php/Ext4_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+- [docker存储类型](https://mp.weixin.qq.com/s?__biz=MzAxOTAzMDEwMA==&mid=2652500868&idx=1&sn=3408536f81dbbe7217f95c9d0b77dd51&chksm=80201abfb75793a9a9f48b5cc0a6de9873740eec3ff97342a64728824799cc3603e547d4e1a6&mpshare=1&scene=2&srcid=1017ayxj6ateP0FwBbAqy4xa#wechat_redirect)
+- [zfs linux文件系统](https://www.centos.bz/2016/12/docker-zfs-in-practice/)
+- [修改docker驱动类型](https://stackoverflow.com/questions/43794169/docker-change-cgroup-driver-to-systemd)
