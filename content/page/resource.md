@@ -36,7 +36,6 @@ tags: ["website", "book"]
 - [kiali 服务拓扑图](https://github.com/kiali/kiali)
 - [kubed k8s集群管理](https://appscode.com/products/kubed/)
 - [guard k8s集群监控](https://appscode.com/products/guard)
-- [fission serverless](https://github.com/fission/fission)
 - [prometheus-operator k8s集群监控](https://github.com/coreos/prometheus-operator)
 - [operator-sdk](https://github.com/operator-framework/operator-sdk)
 - [telepresence](https://github.com/telepresenceio/telepresence)
@@ -58,6 +57,9 @@ tags: ["website", "book"]
 
 ### serverless
 - [高性能事件和数据处理nuclio](https://www.oschina.net/p/nuclio)
+- [gloo 事件流软件](https://github.com/solo-io/gloo)
+- [event-gateway](https://github.com/serverless/event-gateway)
+- [fission serverless](https://github.com/fission/fission)
 
 ### PI
 
@@ -217,3 +219,4 @@ tags: ["website", "book"]
 - [docker存储类型](https://mp.weixin.qq.com/s?__biz=MzAxOTAzMDEwMA==&mid=2652500868&idx=1&sn=3408536f81dbbe7217f95c9d0b77dd51&chksm=80201abfb75793a9a9f48b5cc0a6de9873740eec3ff97342a64728824799cc3603e547d4e1a6&mpshare=1&scene=2&srcid=1017ayxj6ateP0FwBbAqy4xa#wechat_redirect)
 - [zfs linux文件系统](https://www.centos.bz/2016/12/docker-zfs-in-practice/)
 - [修改docker驱动类型](https://stackoverflow.com/questions/43794169/docker-change-cgroup-driver-to-systemd)
+- [hpa 水平自动扩展介绍](https://blog.csdn.net/liyingke112/article/details/77101673)
