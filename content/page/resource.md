@@ -54,6 +54,7 @@ tags: ["website", "book"]
 - [Thanos 开源的大规模Prometheus集群解决方案](http://dockone.io/article/6019)
 - [mergify 自动PR软件](https://mergify.io/)
 - [argoproj](https://github.com/argoproj/argo/blob/master/demo.md)
+- [botpress](https://github.com/botpress/botpress)
 
 ### serverless
 - [高性能事件和数据处理nuclio](https://www.oschina.net/p/nuclio)
