@@ -13,12 +13,13 @@ tags: ["devops"]
 
 - LD权限
 - OA管理
-- IM交流- SQ扫描
+- IM交流
+- SQ扫描
 - CI集成
 - TS测试
 - CD交付
 
-整个平台的组成软件有kubernetes、ldap、gitea、drone、redmine、harbor、Prometheus、robotframework、docker、hugo、minio、webhook、rocket.chat、hubot、API Blueprint、statusok，其中核心部分是kubernetes，通过ldap的权限控制来划分用户权限，整个项目采用REST风格来编写接口，通过drone和gitea来实现自动编译打包以及安装，harbor充当镜像仓库。当处理完毕后，调用robotframework组件来自动跑用例，只有用例全部通过后，才会交给下一步的测试工作，当编写新功能接口测试用例后，redmine记录bug问题，等问题解决完毕后，重新执行上述工作来全量回归。这样就表示测试通过，将升级文档交付给运维来升级。通过Prometheus来实现基础设施以及微服务状态的监控，同时搭配statusok来探测服务可用性，更深层次，当业务涉及的地点十分广，通过搭建分布式业务探测系统来检查服务的可用性，可以搭配在树莓派上面，不需要过多设备。
+整个平台的组成软件有kubernetes、ldap、gitea、drone、redmine、harbor、Prometheus、robotframework、docker、hugo、minio、webhook、rocket.chat、hubot、docker-mailserver、API Blueprint、Review Board、SonarQube、statusok，其中核心部分是kubernetes，通过ldap的权限控制来划分用户权限，整个项目采用REST风格来编写接口，通过drone和gitea来实现自动编译打包以及安装，harbor充当镜像仓库。当处理完毕后，调用robotframework组件来自动跑用例，只有用例全部通过后，才会交给下一步的测试工作，当编写新功能接口测试用例后，redmine记录bug问题，等问题解决完毕后，重新执行上述工作来全量回归。这样就表示测试通过，将升级文档交付给运维来升级。通过Prometheus来实现基础设施以及微服务状态的监控，同时搭配statusok来探测服务可用性，更深层次，当业务涉及的地点十分广，通过搭建分布式业务探测系统来检查服务的可用性，可以搭配在树莓派上面，不需要过多设备。
 
 对于redmine项目管理安装插件有：
 

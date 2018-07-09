@@ -55,6 +55,10 @@ tags: ["website", "book"]
 - [mergify 自动PR软件](https://mergify.io/)
 - [argoproj](https://github.com/argoproj/argo/blob/master/demo.md)
 - [botpress](https://github.com/botpress/botpress)
+- [kubernetes autoscaler](https://github.com/kubernetes/autoscaler)
+- [kubernetes kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
+- [docker-mailserver](https://github.com/tomav/docker-mailserver)
+- [Haraka](https://github.com/haraka/Haraka)
 
 ### serverless
 - [高性能事件和数据处理nuclio](https://www.oschina.net/p/nuclio)
