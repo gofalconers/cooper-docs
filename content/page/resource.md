@@ -221,3 +221,4 @@ tags: ["website", "book"]
 - [zfs linux文件系统](https://www.centos.bz/2016/12/docker-zfs-in-practice/)
 - [修改docker驱动类型](https://stackoverflow.com/questions/43794169/docker-change-cgroup-driver-to-systemd)
 - [hpa 水平自动扩展介绍](https://blog.csdn.net/liyingke112/article/details/77101673)
+- [Broken pipe错误终极解释](https://www.cnblogs.com/metoy/p/6565486.html)
