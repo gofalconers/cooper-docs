@@ -58,8 +58,13 @@ tags: ["website", "book"]
 - [kubernetes autoscaler](https://github.com/kubernetes/autoscaler)
 - [kubernetes kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
 - [docker-mailserver](https://github.com/tomav/docker-mailserver)
+<<<<<<< HEAD
 - [Haraka](https://github.com/haraka/Haraka)
 - [satellite](https://github.com/gravitational/satellite)
+=======
+- [Haraka 邮件服务器](https://github.com/haraka/Haraka)
+- [swaks 邮件测试工具]()
+>>>>>>> origin/master
 
 ### serverless
 - [高性能事件和数据处理nuclio](https://www.oschina.net/p/nuclio)
@@ -228,3 +233,7 @@ tags: ["website", "book"]
 - [修改docker驱动类型](https://stackoverflow.com/questions/43794169/docker-change-cgroup-driver-to-systemd)
 - [hpa 水平自动扩展介绍](https://blog.csdn.net/liyingke112/article/details/77101673)
 - [Broken pipe错误终极解释](https://www.cnblogs.com/metoy/p/6565486.html)
+
+# 书籍下载网站
+
+- [java知识分享](http://www.java1234.com/)
