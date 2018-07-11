@@ -34,6 +34,8 @@ tags: ["devops"]
 - [bug提交规范](https://zh.opensuse.org/openSUSE:%E6%8F%90%E4%BA%A4%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A)
 - [notify_custom_users](https://github.com/Restream/notify_custom_users)
 
+对于ldap的设置，按照
+
 项目二：数字AI家庭
 描述：这是关于一个AI的故事，与智能家居的深度结合。家庭有个智能管家，对于家庭内所有服务进行托管，包括购物消费、水
 - EM邮件
