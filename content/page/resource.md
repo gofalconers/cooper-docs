@@ -58,8 +58,13 @@ tags: ["website", "book"]
 - [kubernetes autoscaler](https://github.com/kubernetes/autoscaler)
 - [kubernetes kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
 - [docker-mailserver](https://github.com/tomav/docker-mailserver)
+<<<<<<< HEAD
+- [Haraka](https://github.com/haraka/Haraka)
+- [satellite](https://github.com/gravitational/satellite)
+=======
 - [Haraka 邮件服务器](https://github.com/haraka/Haraka)
 - [swaks 邮件测试工具]()
+>>>>>>> origin/master
 
 ### serverless
 - [高性能事件和数据处理nuclio](https://www.oschina.net/p/nuclio)
@@ -167,6 +172,7 @@ tags: ["website", "book"]
 - [Don't.Make.Me.Think(中文,第二版)](http://vdisk.weibo.com/s/sYrR9gEu_Mfqo)
 - [布道之道—引领团队拥抱技术创新](http://vdisk.weibo.com/s/zmzzSciGaVmNj)
 - [微服务设计](http://www.downcc.com/soft/301326.html)
+- [build-web-application-with-golang](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md)
 
 ### 专业文章
 - [微服务最佳实践](https://www.oschina.net/translate/cracking-microservices-practices?cmp)
