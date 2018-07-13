@@ -58,13 +58,10 @@ tags: ["website", "book"]
 - [kubernetes autoscaler](https://github.com/kubernetes/autoscaler)
 - [kubernetes kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
 - [docker-mailserver](https://github.com/tomav/docker-mailserver)
-<<<<<<< HEAD
 - [Haraka](https://github.com/haraka/Haraka)
 - [satellite](https://github.com/gravitational/satellite)
-=======
-- [Haraka 邮件服务器](https://github.com/haraka/Haraka)
-- [swaks 邮件测试工具]()
->>>>>>> origin/master
+- [mkcert 自签证书](https://github.com/FiloSottile/mkcert)
+- [external-dns](https://github.com/kubernetes-incubator/external-dns)
 
 ### serverless
 - [高性能事件和数据处理nuclio](https://www.oschina.net/p/nuclio)
