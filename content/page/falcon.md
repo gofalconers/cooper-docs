@@ -61,6 +61,16 @@ tags: ["devops"]
 
 对于项目的安装，统一安装在kubernetes中，对于一些重要的应用进行HA配置、数据备份。
 
+项目使用到的库：
+
+- [go-ldap使用介绍](https://www.golang123.com/topic/1750)
+- [logrus日志模块](https://github.com/sirupsen/logrus)
+- [go-remine项目管理](github.com/mattn/go-redmine)
+- [drone-go构建](github.com/drone/drone-go/drone)
+- [go-gitea源码管理](github.com/go-gitea/go-sdk/gitea)
+
+ldap使用的文章https://blog.csdn.net/dolphin_h/article/details/56349454
+
 项目二：数字AI家庭
 描述：这是关于一个AI的故事，与智能家居的深度结合。家庭有个智能管家，对于家庭内所有服务进行托管，包括购物消费、水
 - EM邮件

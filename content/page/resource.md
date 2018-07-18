@@ -62,6 +62,7 @@ tags: ["website", "book"]
 - [satellite](https://github.com/gravitational/satellite)
 - [mkcert 自签证书](https://github.com/FiloSottile/mkcert)
 - [external-dns](https://github.com/kubernetes-incubator/external-dns)
+- [StackStorm](https://github.com/StackStorm/st2)
 
 ### serverless
 - [高性能事件和数据处理nuclio](https://www.oschina.net/p/nuclio)
@@ -230,7 +231,14 @@ tags: ["website", "book"]
 - [修改docker驱动类型](https://stackoverflow.com/questions/43794169/docker-change-cgroup-driver-to-systemd)
 - [hpa 水平自动扩展介绍](https://blog.csdn.net/liyingke112/article/details/77101673)
 - [Broken pipe错误终极解释](https://www.cnblogs.com/metoy/p/6565486.html)
+- [csrf 介绍](https://blog.csdn.net/qq_15096707/article/details/51307024)
 
 # 书籍下载网站
 
 - [java知识分享](http://www.java1234.com/)
+
+# 产品原型工具
+
+- [balsamiq mockups](https://www.7down.com/soft/127814.html)
+- [api 语言版本控制](https://semver.org/lang/zh-CN/#spec-item-1)
+- [developer-roadmap-chinese](https://github.com/goodjack/developer-roadmap-chinese)
