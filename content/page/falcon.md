@@ -71,6 +71,9 @@ tags: ["devops"]
 
 ldap使用的文章https://blog.csdn.net/dolphin_h/article/details/56349454
 
+IM交流工具https://github.com/mattermost/
+IM视频会议https://github.com/mattermost/mattermost-webrtc
+
 项目二：数字AI家庭
 描述：这是关于一个AI的故事，与智能家居的深度结合。家庭有个智能管家，对于家庭内所有服务进行托管，包括购物消费、水
 - EM邮件
