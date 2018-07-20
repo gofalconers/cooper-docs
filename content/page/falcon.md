@@ -64,12 +64,30 @@ tags: ["devops"]
 项目使用到的库：
 
 - [go-ldap使用介绍](https://www.golang123.com/topic/1750)
-- [logrus日志模块](https://github.com/sirupsen/logrus)
+- [logrus日志模块](https://github.com/sirupsen/logrus) 利用插件推送给日志系统
 - [go-remine项目管理](github.com/mattn/go-redmine)
 - [drone-go构建](github.com/drone/drone-go/drone)
 - [go-gitea源码管理](github.com/go-gitea/go-sdk/gitea)
 
 ldap使用的文章https://blog.csdn.net/dolphin_h/article/details/56349454
+golang交叉编译工具https://github.com/mitchellh/gox
+golang依赖管理工具https://github.com/kardianos/govendor
+ssh的web终端https://github.com/liftoff/GateOne
+ssh的web终端https://github.com/codetainerapp/codetainer
+golang爬虫工具https://github.com/gocolly/colly
+golang的worker工具https://github.com/benmanns/goworker
+golang的私有网盘https://github.com/syncthing/syncthing
+golang的消息推送https://github.com/nats-io/go-nats
+golang的消息推送https://github.com/nsqio/nsq
+golang的健康检查https://github.com/etherlabsio/healthcheck
+golang的健康检查https://github.com/Talento90/go-health
+golang的pdf工具https://github.com/jung-kurt/gofpdf
+golang的模板工具https://github.com/valyala/quicktemplate
+golang的selenium工具https://github.com/aandryashin/selenoid
+golang的selenium工具https://github.com/aerokube/ggr
+golang的类型检查https://github.com/asaskevich/govalidator
+golang的job工具https://github.com/ajvb/kala
+golang的线上接口监控https://github.com/sanathp/statusok
 
 项目二：数字AI家庭
 描述：这是关于一个AI的故事，与智能家居的深度结合。家庭有个智能管家，对于家庭内所有服务进行托管，包括购物消费、水
@@ -77,3 +95,10 @@ ldap使用的文章https://blog.csdn.net/dolphin_h/article/details/56349454
 - PM管理
 - PJ代码
 电气费、家庭灯光、智能设备、数字影视、家庭种植等进行管理。
+
+IOT开发框架
+https://github.com/google/periph
+https://github.com/Mainflux/mainflux
+https://github.com/sensorbee/sensorbee
+https://github.com/hybridgroup/gobot/
+https://github.com/sensorbee/sensorbee
