@@ -231,7 +231,11 @@ tags: ["website", "book"]
 - [修改docker驱动类型](https://stackoverflow.com/questions/43794169/docker-change-cgroup-driver-to-systemd)
 - [hpa 水平自动扩展介绍](https://blog.csdn.net/liyingke112/article/details/77101673)
 - [Broken pipe错误终极解释](https://www.cnblogs.com/metoy/p/6565486.html)
+<<<<<<< HEAD
+- [alpine 树莓派安装](https://xts.so/linux/install-the-alpine-linux-on-raspberry-pi-zero-w.html)
+=======
 - [csrf 介绍](https://blog.csdn.net/qq_15096707/article/details/51307024)
+>>>>>>> origin/master
 
 # 书籍下载网站
 

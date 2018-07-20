@@ -89,6 +89,9 @@ golang的类型检查https://github.com/asaskevich/govalidator
 golang的job工具https://github.com/ajvb/kala
 golang的线上接口监控https://github.com/sanathp/statusok
 
+IM交流工具https://github.com/mattermost/
+IM视频会议https://github.com/mattermost/mattermost-webrtc
+
 项目二：数字AI家庭
 描述：这是关于一个AI的故事，与智能家居的深度结合。家庭有个智能管家，对于家庭内所有服务进行托管，包括购物消费、水
 - EM邮件
