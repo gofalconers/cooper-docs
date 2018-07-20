@@ -58,6 +58,7 @@ tags: ["devops"]
 - 运维提供运维手册、紧急事故修复流程，提供标准模板，可以修改指定
 - 项目事故报告编写规划，通过hugo编写，每个项目都有一个事故清单，来进行事故还原，以及一些改进措施，由项目负责人编写，提供模板，纳入度量体系中，待确认责任归属在哪
 - 对于工作外的其他事，由人事进行统一处理，纳入度量体系，选择一个OA系统进行管理
+- 企业文档分享https://www.oschina.net/p/DocHub
 
 对于项目的安装，统一安装在kubernetes中，对于一些重要的应用进行HA配置、数据备份。
 
@@ -88,6 +89,15 @@ golang的selenium工具https://github.com/aerokube/ggr
 golang的类型检查https://github.com/asaskevich/govalidator
 golang的job工具https://github.com/ajvb/kala
 golang的线上接口监控https://github.com/sanathp/statusok
+golang的加密证书https://github.com/FiloSottile/mkcert
+
+kubernetes上的应用部署工具https://github.com/Azure/draft
+gitops介绍http://dockone.io/article/3450
+kubernetes资源管理https://github.com/bitnami-labs/sealed-secrets
+gitops的op配置https://github.com/weaveworks/flux
+Kubernetes Operator介绍https://www.jianshu.com/p/4bde3a6cd5ed
+对于git报错Peer reports incompatible or unsupported protocol version，执行yum update -y nss curl libcurl就解决问题
+kubernetes的ssl工具https://github.com/kubepack/onessl
 
 IM交流工具https://github.com/mattermost/
 IM视频会议https://github.com/mattermost/mattermost-webrtc
